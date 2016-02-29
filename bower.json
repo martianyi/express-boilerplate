@@ -1,0 +1,22 @@
+{
+  "name": "express-boilerplate",
+  "description": "express boilerplate",
+  "main": "",
+  "authors": [
+    "Yi Kai <beliefs111@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor/",
+    "test",
+    "tests"
+  ]
+}
