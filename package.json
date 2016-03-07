@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "build": "gulp uglify",
-    "start": "DEBUG=express-boilerplate:* gulp start"
+    "start": "DEBUG=express-boilerplate:*,gulp:* gulp start"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

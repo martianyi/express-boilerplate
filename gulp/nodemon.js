@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var path = require('path');
 var conf = require('./conf');
+var debug = require('debug')('gulp:nodemon');
 
 //Loading all gulp plugins
 var $ = require('gulp-load-plugins')();
@@ -14,6 +15,6 @@ gulp.task('start', function () {
             tasks: ['uglify']
         })
         .on('restart', function () {
-            console.log('server restarted!')
+            debug('server restarted!')
         })
 });
