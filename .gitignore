@@ -130,4 +130,6 @@ $RECYCLE.BIN/
 
 # Project level
 public/vendor/*
+public/js/*
+!public/js/.keep
 

@@ -14,7 +14,9 @@ var gutil = require('gulp-util');
  *  The main paths of your project handle these with care
  */
 exports.paths = {
-    jsSrc: './client',
+    es5Src: './clients/es5',
+    es6Src: './clients/es6',
+    jsxSrc: './clients/jsx',
     jsDist: './public/js'
 };
 
