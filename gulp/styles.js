@@ -3,6 +3,10 @@
 var gulp = require('gulp');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
+var precss = require('precss');
+var reporter = require("postcss-reporter");
+var scss = require("postcss-scss");
+var stylelint = require("stylelint");
 var del = require('del');
 var path = require('path');
 var conf = require('./conf');
@@ -23,18 +27,24 @@ gulp.task('styles', ['clean'], function () {
 
 function buildStyles(file) {
     var processors = [
+        stylelint(),
+        precss({
+            import: {
+                extension: 'scss'
+            }
+        }),
         autoprefixer,
-        cssnano
+        cssnano,
+        reporter({ clearMessages: true })
     ];
 
     return gulp.src(path.join(conf.paths.sassSrc, file))
-        .pipe($.sass())
-        .on('error', conf.errorHandler('SASS'))
         .pipe($.sourcemaps.init())
-        .pipe($.postcss(processors))
+        .pipe($.postcss(processors, {syntax: scss}))
         .on('error', conf.errorHandler('PostCSS'))
         .pipe($.rename({
-            suffix: '.min'
+            suffix: '.min',
+            extname: ".css"
         }))
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest(path.join(conf.paths.cssDist)))
