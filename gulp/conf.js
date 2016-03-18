@@ -17,7 +17,9 @@ exports.paths = {
     es5Src: './clients/es5',
     es6Src: './clients/es6',
     jsxSrc: './clients/jsx',
-    jsDist: './public/js'
+    sassSrc: './styles',
+    jsDist: './public/js',
+    cssDist: './public/css'
 };
 
 /**

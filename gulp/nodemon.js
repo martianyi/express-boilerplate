@@ -11,9 +11,9 @@ var $ = require('gulp-load-plugins')();
 gulp.task('nodemon', function () {
     return $.nodemon({
             script: './bin/www',
-            ext: 'js jsx',
-            ignore: [path.join(conf.paths.jsDist, '**/*.js')],
-            tasks: ['es5-uglify', 'es6-babel', 'jsx-build']
+            ext: 'js jsx scss',
+            ignore: [path.join(conf.paths.jsDist, '**/*'), path.join(conf.paths.cssDist, '**/*')],
+            tasks: ['es5-uglify', 'es6-babel', 'jsx-build', 'styles']
         })
         .on('restart', function () {
             debug('server restarted!')

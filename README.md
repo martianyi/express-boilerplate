@@ -8,3 +8,11 @@ cd express-boilerplate
 npm install && bower install
 npm start
 ```
+
+## 提供的功能
+
+### SCSS
+
+### React
+
+### ES6
