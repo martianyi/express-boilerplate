@@ -132,4 +132,6 @@ $RECYCLE.BIN/
 public/vendor/*
 public/js/*
 !public/js/.keep
+public/css/*
+!public/css/.keep
 
