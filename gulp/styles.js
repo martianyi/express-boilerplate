@@ -7,21 +7,14 @@ var precss = require('precss');
 var reporter = require("postcss-reporter");
 var scss = require("postcss-scss");
 var stylelint = require("stylelint");
-var del = require('del');
 var path = require('path');
 var conf = require('./conf');
 
 // Loading all plugins
 var $ = require('gulp-load-plugins')();
 
-gulp.task('clean', function () {
-    return del([
-        path.join(conf.paths.cssDist)
-    ]);
-});
-
 // Compile LESS to CSS
-gulp.task('styles', ['clean'], function () {
+gulp.task('styles', ['clean:css'], function () {
     return buildStyles('app.scss')
 });
 

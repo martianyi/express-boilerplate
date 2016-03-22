@@ -12,8 +12,17 @@ gulp.task('nodemon', function () {
     return $.nodemon({
             script: './bin/www',
             ext: 'js jsx scss',
-            ignore: [path.join(conf.paths.jsDist, '**/*'), path.join(conf.paths.cssDist, '**/*')],
-            tasks: ['es5-uglify', 'es6-babel', 'jsx-build', 'styles']
+            ignore: [
+                path.join(conf.paths.jsDist, '**/*'),
+                path.join(conf.paths.cssDist, '**/*'),
+                path.join('public', 'vendor')
+            ],
+            tasks: [
+                'es5-uglify',
+                'es6-rollup',
+                //'jsx-build',
+                'styles'
+            ]
         })
         .on('restart', function () {
             debug('server restarted!')
