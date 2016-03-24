@@ -14,24 +14,26 @@ var babel = require('rollup-plugin-babel');
 var uglify = require('rollup-plugin-uglify');
 
 var includePathOptions = {
-    paths: ['clients/es6']
+    paths: [conf.paths.es6Src]
 };
 
-var entries = []; //put entries here
+var entries = [
+    path.join(conf.paths.es6Src, 'speaker.js'),
+    path.join(conf.paths.es6Src, 'audience.js')
+];
 
 // Compiling ES6 to ES5
 gulp.task("es6-rollup", function () {
-    return entries.forEach(function (e) {
-        rollupJS(e)
-    })
+    var arr = entries.map(function (e) {
+        return rollupJS(e)
+    });
+
+    return Promise.all(arr);
 });
 
-function rollupJS(entries) {
-    var output = entries.split('/').pop();
-    output = output.split('.').shift();
-    output += '.min.js';
+function rollupJS(file) {
     return rollup({
-        entry: entries,
+        entry: file,
         plugins: [
             rollupIncludePaths(includePathOptions),
             babel(),
@@ -40,11 +42,16 @@ function rollupJS(entries) {
     }).then(function (bundle) {
         return bundle
             .write({
-                dest: path.join(conf.paths.jsDist, output),
+                dest: path.join(conf.paths.jsDist, rename(file)),
                 format: 'iife',
                 sourceMap: true
             });
     });
-
 }
 
+function rename(input) {
+    var output = input.split('/').pop();
+    output = output.split('.').shift();
+    output += '.min.js';
+    return output;
+}
