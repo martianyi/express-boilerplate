@@ -17,10 +17,7 @@ var includePathOptions = {
     paths: [conf.paths.es6Src]
 };
 
-var entries = [
-    path.join(conf.paths.es6Src, 'speaker.js'),
-    path.join(conf.paths.es6Src, 'audience.js')
-];
+var entries = [];
 
 // Compiling ES6 to ES5
 gulp.task("es6-rollup", function () {
