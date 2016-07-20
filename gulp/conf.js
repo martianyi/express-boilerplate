@@ -15,9 +15,8 @@ var gutil = require('gulp-util');
  */
 exports.paths = {
     es5Src: './clients/es5',
-    es6Src: './clients/es6',
-    jsxSrc: './clients/jsx',
-    sassSrc: './styles',
+    es6Src: [],
+    sassSrc: ['./styles/app.scss'],
     jsDist: './public/js',
     cssDist: './public/css'
 };
@@ -33,4 +32,3 @@ exports.errorHandler = function (title) {
         this.emit('end');
     };
 };
-

@@ -20,7 +20,6 @@ gulp.task('nodemon', function () {
             tasks: [
                 'es5-uglify',
                 'es6-rollup',
-                //'jsx-build',
                 'styles'
             ]
         })

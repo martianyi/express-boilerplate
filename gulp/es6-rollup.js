@@ -9,19 +9,12 @@ var conf = require('./conf');
 var $ = require('gulp-load-plugins')();
 
 //Loading rollup plugins
-var rollupIncludePaths = require('rollup-plugin-includepaths');
 var babel = require('rollup-plugin-babel');
 var uglify = require('rollup-plugin-uglify');
 
-var includePathOptions = {
-    paths: [conf.paths.es6Src]
-};
-
-var entries = [];
-
 // Compiling ES6 to ES5
 gulp.task("es6-rollup", function () {
-    var arr = entries.map(function (e) {
+    var arr = conf.paths.es6Src.map(function (e) {
         return rollupJS(e)
     });
 
@@ -32,7 +25,6 @@ function rollupJS(file) {
     return rollup({
         entry: file,
         plugins: [
-            rollupIncludePaths(includePathOptions),
             babel(),
             uglify()
         ]

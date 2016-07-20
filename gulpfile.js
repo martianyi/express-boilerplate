@@ -11,6 +11,6 @@ requireDir('./gulp', {
     recurse: true
 });
 
-gulp.task('build', ['es5-uglify', 'es6-rollup', 'jsx-build', 'styles']);
+gulp.task('build', ['es5-uglify', 'es6-rollup', 'styles']);
 
 gulp.task('default', ['nodemon']);

@@ -13,25 +13,29 @@ var conf = require('./conf');
 // Loading all plugins
 var $ = require('gulp-load-plugins')();
 
-// Compile LESS to CSS
+// postcss processors
+var processors = [
+    stylelint(),
+    precss({
+        import: {
+            extension: 'scss'
+        }
+    }),
+    autoprefixer,
+    cssnano,
+    reporter({clearMessages: true})
+];
+
+// Compile SCSS to CSS
 gulp.task('styles', ['clean:css'], function () {
-    return buildStyles('app.scss')
+    var arr = conf.paths.sassSrc.map((file)=> {
+            return buildStyles(file);
+});
+    return Promise.all(arr);
 });
 
 function buildStyles(file) {
-    var processors = [
-        stylelint(),
-        precss({
-            import: {
-                extension: 'scss'
-            }
-        }),
-        autoprefixer,
-        cssnano,
-        reporter({ clearMessages: true })
-    ];
-
-    return gulp.src(path.join(conf.paths.sassSrc, file))
+    return gulp.src(file)
         .pipe($.sourcemaps.init())
         .pipe($.postcss(processors, {syntax: scss}))
         .on('error', conf.errorHandler('PostCSS'))
