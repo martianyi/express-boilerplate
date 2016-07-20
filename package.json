@@ -34,6 +34,7 @@
     "require-dir": "^0.3.0",
     "rollup": "^0.34.1",
     "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-includepaths": "^0.1.5",
     "rollup-plugin-uglify": "^0.3.1",
     "stylelint": "^5.1.0",
     "vinyl-buffer": "^1.0.0",

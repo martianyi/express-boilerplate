@@ -16,6 +16,7 @@ var gutil = require('gulp-util');
 exports.paths = {
     es5Src: './clients/es5',
     es6Src: [],
+    es6Entries:[],
     sassSrc: ['./styles/app.scss'],
     jsDist: './public/js',
     cssDist: './public/css'
