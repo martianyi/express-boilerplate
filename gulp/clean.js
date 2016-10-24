@@ -5,8 +5,9 @@ var del = require('del');
 var path = require('path');
 var conf = require('./conf');
 
-gulp.task('clean:css', function () {
+gulp.task('clean', function () {
     return del([
-        path.join(conf.paths.cssDist)
+        conf.paths.jsDist,
+        conf.paths.cssDist
     ]);
 });

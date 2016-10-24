@@ -8,7 +8,7 @@ var conf = require('./conf');
 var $ = require('gulp-load-plugins')();
 
 // Uglify scripts
-gulp.task("es5-uglify", function() {
+gulp.task("uglify", function() {
     return gulp.src(path.join(conf.paths.es5Src, '**/*.js'))
         .pipe($.sourcemaps.init())
         .pipe($.uglify())

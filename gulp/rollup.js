@@ -14,7 +14,7 @@ var babel = require('rollup-plugin-babel');
 var uglify = require('rollup-plugin-uglify');
 
 // Compiling ES6 to ES5
-gulp.task("es6-rollup", function () {
+gulp.task("rollup", function () {
     var arr = conf.paths.es6Entries.map(function (e) {
         return rollupJS(e)
     });

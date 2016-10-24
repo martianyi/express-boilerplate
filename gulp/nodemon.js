@@ -11,17 +11,14 @@ var $ = require('gulp-load-plugins')();
 gulp.task('nodemon', function () {
     return $.nodemon({
             script: './bin/www',
-            ext: 'js jsx scss',
+            ext: 'js',
             ignore: [
-                path.join(conf.paths.jsDist, '**/*'),
-                path.join(conf.paths.cssDist, '**/*'),
-                path.join('public', 'vendor')
+                path.join(conf.paths.sassSrc, '**/*'),
+                path.join(conf.paths.es6Src, '**/*'),
+                path.join(conf.paths.es5Src, '**/*'),
+                path.join('public', '**/*')
             ],
-            tasks: [
-                'es5-uglify',
-                'es6-rollup',
-                'styles'
-            ]
+            tasks: []
         })
         .on('restart', function () {
             debug('server restarted!')

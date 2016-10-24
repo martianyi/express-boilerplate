@@ -129,9 +129,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # Project level
-public/vendor/*
-public/js/*
-!public/js/.keep
-public/css/*
-!public/css/.keep
+!public
+public/*
 

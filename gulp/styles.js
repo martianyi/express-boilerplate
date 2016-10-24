@@ -27,8 +27,8 @@ var processors = [
 ];
 
 // Compile SCSS to CSS
-gulp.task('styles', ['clean:css'], function () {
-    var arr = conf.paths.sassSrc.map((file)=> {
+gulp.task('styles', function () {
+    var arr = conf.paths.sassEntries.map((file)=> {
             return buildStyles(file);
 });
     return Promise.all(arr);
