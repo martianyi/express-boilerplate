@@ -19,4 +19,12 @@ gulp.task('build', function () {
     )
 });
 
-gulp.task('default', ['nodemon', 'watch']);
+gulp.task('dev', function () {
+   runSequence(
+       'clean',
+       ['uglify', 'rollup', 'styles'],
+       ['nodemon', 'watch']
+   )
+});
+
+gulp.task('default', ['dev']);
