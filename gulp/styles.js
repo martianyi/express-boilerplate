@@ -1,19 +1,19 @@
 "use strict";
 
 var gulp = require('gulp');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
-var precss = require('precss');
-var reporter = require("postcss-reporter");
-var scss = require("postcss-scss");
-var stylelint = require("stylelint");
 var path = require('path');
 var conf = require('./conf');
 
-// Loading all plugins
+// Loading gulp plugins
 var $ = require('gulp-load-plugins')();
 
-// postcss processors
+// Loading postcss processors
+var stylelint = require("stylelint");
+var precss = require('precss');
+var scss = require("postcss-scss");
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
+var reporter = require("postcss-reporter");
 var processors = [
     stylelint(),
     precss({
@@ -28,10 +28,8 @@ var processors = [
 
 // Compile SCSS to CSS
 gulp.task('styles', function () {
-    var arr = conf.paths.sassEntries.map((file)=> {
-            return buildStyles(file);
-});
-    return Promise.all(arr);
+    var tasks = conf.paths.sassEntries.map(file=>buildStyles(file));
+    return Promise.all(tasks);
 });
 
 function buildStyles(file) {

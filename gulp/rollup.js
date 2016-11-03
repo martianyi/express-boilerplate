@@ -5,9 +5,6 @@ var rollup = require('rollup').rollup;
 var path = require('path');
 var conf = require('./conf');
 
-//Loading all gulp plugins
-var $ = require('gulp-load-plugins')();
-
 //Loading rollup plugins
 var rollupIncludePaths = require('rollup-plugin-includepaths');
 var babel = require('rollup-plugin-babel');
@@ -15,11 +12,8 @@ var uglify = require('rollup-plugin-uglify');
 
 // Compiling ES6 to ES5
 gulp.task("rollup", function () {
-    var arr = conf.paths.es6Entries.map(function (e) {
-        return rollupJS(e)
-    });
-
-    return Promise.all(arr);
+    var tasks = conf.paths.es6Entries.map((e)=>rollupJS(e));
+    return Promise.all(tasks);
 });
 
 function rollupJS(file) {
@@ -37,6 +31,9 @@ function rollupJS(file) {
             .write({
                 dest: path.join(conf.paths.jsDist, rename(file)),
                 format: 'iife',
+                globals: {
+
+                },
                 sourceMap: true
             });
     });
