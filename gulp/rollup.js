@@ -6,7 +6,6 @@ var path = require('path');
 var conf = require('./conf');
 
 //Loading rollup plugins
-var rollupIncludePaths = require('rollup-plugin-includepaths');
 var babel = require('rollup-plugin-babel');
 var uglify = require('rollup-plugin-uglify');
 
@@ -20,9 +19,6 @@ function rollupJS(file) {
     return rollup({
         entry: file,
         plugins: [
-            rollupIncludePaths({
-                paths: conf.paths.es6Src
-            }),
             babel(),
             uglify()
         ]
