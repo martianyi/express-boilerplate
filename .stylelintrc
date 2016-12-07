@@ -1,6 +1,0 @@
-{
-  "rules": {
-    "at-rule-empty-line-before": "never",
-    "at-rule-no-vendor-prefix": true
-  }
-}

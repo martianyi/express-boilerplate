@@ -17,9 +17,9 @@ exports.paths = {
     es5Src: './clients/es5',
     es6Src: './clients/es6',
     es6Entries:[],
-    sassSrc: './styles',
-    sassEntries: [
-        './styles/app.scss'
+    lessSrc: './styles',
+    lessEntries: [
+        './styles/app.less'
     ],
     jsDist: './public/js',
     cssDist: './public/css'

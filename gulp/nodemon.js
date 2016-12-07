@@ -13,7 +13,7 @@ gulp.task('nodemon', function () {
             script: './bin/www',
             ext: 'js',
             ignore: [
-                path.join(conf.paths.sassSrc, '**/*'),
+                path.join(conf.paths.lessSrc, '**/*'),
                 path.join(conf.paths.es6Src, '**/*'),
                 path.join(conf.paths.es5Src, '**/*'),
                 path.join('public', '**/*')

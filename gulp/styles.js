@@ -8,19 +8,10 @@ var conf = require('./conf');
 var $ = require('gulp-load-plugins')();
 
 // Loading postcss processors
-var stylelint = require("stylelint");
-var precss = require('precss');
-var scss = require("postcss-scss");
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 var reporter = require("postcss-reporter");
 var processors = [
-    stylelint(),
-    precss({
-        import: {
-            extension: 'scss'
-        }
-    }),
     autoprefixer,
     cssnano,
     reporter({clearMessages: true})
@@ -28,14 +19,16 @@ var processors = [
 
 // Compile SCSS to CSS
 gulp.task('styles', function () {
-    var tasks = conf.paths.sassEntries.map(file=>buildStyles(file));
+    var tasks = conf.paths.lessEntries.map(file=>buildStyles(file));
     return Promise.all(tasks);
 });
 
 function buildStyles(file) {
     return gulp.src(file)
         .pipe($.sourcemaps.init())
-        .pipe($.postcss(processors, {syntax: scss}))
+        .pipe($.less())
+        .on('error', conf.errorHandler('LESS'))
+        .pipe($.postcss(processors))
         .on('error', conf.errorHandler('PostCSS'))
         .pipe($.rename({
             suffix: '.min',
