@@ -1,17 +1,17 @@
 "use strict";
 
-var gulp = require('gulp');
-var path = require('path');
-var conf = require('./conf');
+const gulp = require('gulp');
+const path = require('path');
+const conf = require('./conf');
 
 // Loading gulp plugins
-var $ = require('gulp-load-plugins')();
+const $ = require('gulp-load-plugins')();
 
 // Loading postcss processors
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
-var reporter = require("postcss-reporter");
-var processors = [
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const reporter = require("postcss-reporter");
+const processors = [
     autoprefixer,
     cssnano,
     reporter({clearMessages: true})
@@ -19,7 +19,7 @@ var processors = [
 
 // Compile SCSS to CSS
 gulp.task('styles', function () {
-    var tasks = conf.paths.lessEntries.map(file=>buildStyles(file));
+    const tasks = conf.paths.lessEntries.map(file=>buildStyles(file));
     return Promise.all(tasks);
 });
 

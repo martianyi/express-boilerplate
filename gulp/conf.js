@@ -1,28 +1,31 @@
 "use strict";
 
 /**
- *  This file contains the variables used in other gulp files
+ *  This file contains the constiables used in other gulp files
  *  which defines tasks
  *  By design, we only put there very generic config values
  *  which are used in several places to keep good readability
  *  of the tasks
  */
 
-var gutil = require('gulp-util');
+const gutil = require('gulp-util');
 
 /**
  *  The main paths of your project handle these with care
  */
 exports.paths = {
-    es5Src: './clients/es5',
-    es6Src: './clients/es6',
-    es6Entries:[],
-    lessSrc: './styles',
-    lessEntries: [
-        './styles/app.less'
+    es6Src: [
+        'app/clients/**/*.js'
     ],
-    jsDist: './public/js',
-    cssDist: './public/css'
+    es6Entries: [],
+    lessSrc: [
+        'app/styles/**/*.less'
+    ],
+    lessEntries: [
+        'app/styles/app.less'
+    ],
+    jsDist: 'public/js',
+    cssDist: 'public/css'
 };
 
 /**

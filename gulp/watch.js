@@ -1,12 +1,11 @@
 "use strict";
 
-var gulp = require('gulp');
-var path = require('path');
-var conf = require('./conf');
+const gulp = require('gulp');
+const path = require('path');
+const conf = require('./conf');
 
 gulp.task('watch', function () {
-    gulp.watch(path.join(conf.paths.lessSrc, '**/*.less'), ['styles']);
-    gulp.watch(path.join(conf.paths.es6Src, '**/*.js'), ['rollup']);
-    gulp.watch(path.join(conf.paths.es5Src, '**/*.js'), ['uglify']);
+    gulp.watch(conf.paths.lessSrc, ['styles']);
+    gulp.watch(conf.paths.es6Src, ['rollup']);
 });
 

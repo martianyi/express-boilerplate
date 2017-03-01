@@ -131,4 +131,5 @@ $RECYCLE.BIN/
 # Project level
 !public
 public/*
+config.json
 

@@ -1,17 +1,17 @@
 "use strict";
 
-var gulp = require('gulp');
-var rollup = require('rollup').rollup;
-var path = require('path');
-var conf = require('./conf');
+const gulp = require('gulp');
+const rollup = require('rollup').rollup;
+const path = require('path');
+const conf = require('./conf');
 
 //Loading rollup plugins
-var babel = require('rollup-plugin-babel');
-var uglify = require('rollup-plugin-uglify');
+const babel = require('rollup-plugin-babel');
+const uglify = require('rollup-plugin-uglify');
 
 // Compiling ES6 to ES5
 gulp.task("rollup", function () {
-    var tasks = conf.paths.es6Entries.map((e)=>rollupJS(e));
+    const tasks = conf.paths.es6Entries.map((e) => rollupJS(e));
     return Promise.all(tasks);
 });
 
@@ -22,21 +22,19 @@ function rollupJS(file) {
             babel(),
             uglify()
         ]
-    }).then(function (bundle) {
+    }).then((bundle) => {
         return bundle
             .write({
                 dest: path.join(conf.paths.jsDist, rename(file)),
                 format: 'iife',
-                globals: {
-
-                },
+                globals: {},
                 sourceMap: true
             });
     });
 }
 
 function rename(input) {
-    var output = input.split('/').pop();
+    let output = input.split('/').pop();
     output = output.split('.').shift();
     output += '.min.js';
     return output;

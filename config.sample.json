@@ -1,0 +1,13 @@
+{
+  "port": 3000,
+  // port to serve. 80 for HTTP and 443 for HTTPs.
+  "enable_https": false,
+  // enable HTTPS.
+  "https_private_key": "",
+  // path to the private key file (typically .key or .pem). only used when "enable_https" is true.
+  "https_certificate": "",
+  // path to the certificate file (typically .crt or .pem). only used when "enable_https" is true.
+  "force_https_redirect": false
+  // force redirect all HTTP requests to HTTPS, false by default. used when "enable_https" is true.
+  // if true, this app will redirect all 80 port requests to the correct HTTPS address/URL.
+}

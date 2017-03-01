@@ -1,8 +1,8 @@
 "use strict";
 
-var gulp = require('gulp');
-var requireDir = require('require-dir');
-var runSequence = require('run-sequence');
+const gulp = require('gulp');
+const requireDir = require('require-dir');
+const runSequence = require('run-sequence');
 
 /**
  *  This will load all js files in the gulp directory
@@ -15,16 +15,16 @@ requireDir('./gulp', {
 gulp.task('build', function () {
     runSequence(
         'clean',
-        ['uglify', 'rollup', 'styles']
+        ['rollup', 'styles']
     )
 });
 
 gulp.task('dev', function () {
-   runSequence(
-       'clean',
-       ['uglify', 'rollup', 'styles'],
-       ['nodemon', 'watch']
-   )
+    runSequence(
+        'clean',
+        ['rollup', 'styles'],
+        ['nodemon', 'watch']
+    )
 });
 
 gulp.task('default', ['dev']);
