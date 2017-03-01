@@ -7,7 +7,12 @@
   // path to the private key file (typically .key or .pem). only used when "enable_https" is true.
   "https_certificate": "",
   // path to the certificate file (typically .crt or .pem). only used when "enable_https" is true.
-  "force_https_redirect": false
+  "force_https_redirect": false,
   // force redirect all HTTP requests to HTTPS, false by default. used when "enable_https" is true.
   // if true, this app will redirect all 80 port requests to the correct HTTPS address/URL.
+
+  "log_level": "DEBUG"
+  // the minimum log level to show.
+  // defaults to DEBUG. Also INFO, WARN, ERROR.
+  // environment variable "LOG_LEVEL" will overwrite this value.
 }

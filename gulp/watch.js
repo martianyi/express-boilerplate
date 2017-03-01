@@ -8,4 +8,3 @@ gulp.task('watch', function () {
     gulp.watch(conf.paths.lessSrc, ['styles']);
     gulp.watch(conf.paths.es6Src, ['rollup']);
 });
-

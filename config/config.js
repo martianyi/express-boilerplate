@@ -23,7 +23,7 @@ nconf.file({
 
 // 默认配置
 nconf.defaults({
-    port: 80, // port to serve. default value set to 80
+    port: 3000, // port to serve.
     enable_https: false
 });
 

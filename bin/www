@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 
-const debug = require('debug')('express-boilerplate:www');
 const app = require('../app');
 const config = require('../config/config');
+const logger = require('../lib/logger');
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
@@ -71,11 +71,11 @@ function httpsRedirect() {
         // handle specific listen errors with friendly messages
         switch (error.code) {
             case 'EACCES':
-                console.error('Not enough privileges to use port 80. Force https redirect failed');
+                logger.error('Not enough privileges to use port 80. Force https redirect failed');
                 process.exit(1);
                 break;
             case 'EADDRINUSE':
-                console.error('Port 80 is already in use. Force https redirect failed');
+                logger.error('Port 80 is already in use. Force https redirect failed');
                 process.exit(1);
                 break;
             default:
@@ -83,7 +83,7 @@ function httpsRedirect() {
         }
     });
     server.on('listening', function () {
-        console.debug('rtc-rooms-admin is listening on port 80. Force https redirect enabled');
+        logger.debug('express-boilerplate is listening on port 80. Force https redirect enabled');
     });
     server.listen(80);
 }
@@ -108,11 +108,11 @@ function start(server) {
         // handle specific listen errors with friendly messages
         switch (error.code) {
             case 'EACCES':
-                console.error(bind + ' requires elevated privileges');
+                logger.error(bind + ' requires elevated privileges');
                 process.exit(1);
                 break;
             case 'EADDRINUSE':
-                console.error(bind + ' is already in use');
+                logger.error(bind + ' is already in use');
                 process.exit(1);
                 break;
             default:
@@ -124,7 +124,7 @@ function start(server) {
         const bind = typeof port === 'string'
             ? 'pipe ' + port
             : 'port ' + port;
-        debug('rtc-rooms-admin is listening on ' + bind);
+        logger.debug('express-boilerplate is listening on ' + bind);
     }
 
 }
