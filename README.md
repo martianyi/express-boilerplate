@@ -1,4 +1,4 @@
-# Express boilerplate
+# express-boilerplate
 
 ## Quick start
 
